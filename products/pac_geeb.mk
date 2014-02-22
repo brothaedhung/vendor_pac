@@ -5,10 +5,7 @@ ifeq (pac_geeb,$(TARGET_PRODUCT))
 OVERLAY_TARGET := pa_xhdpi
 
 # AOKP device overlay
-PRODUCT_PACKAGE_OVERLAYS += vendor/pac/overlay/aokp/device/xhdpi
-
-# PAC device overlay
-$(shell cp -f vendor/pac/prebuilt/common/bootanimation_framework/android-logo-mask_lg-xhdpi.png frameworks/base/core/res/assets/images/android-logo-mask.png)
+#PRODUCT_PACKAGE_OVERLAYS += vendor/pac/overlay/aokp/device/xhdpi
 
 # PAC boot logo
 PRODUCT_COPY_FILES += \
@@ -16,7 +13,7 @@ PRODUCT_COPY_FILES += \
 
 # Copy bootanimation
 PRODUCT_COPY_FILES += \
-    vendor/pac/prebuilt/xhdpi/bootanimation.zip:system/media/bootanimation.zip
+    vendor/pac/prebuilt/720x1280/bootanimation.zip:system/media/bootanimation.zip
 
 # include PAC common configuration
 include vendor/pac/config/pac_common.mk
@@ -25,9 +22,5 @@ include vendor/pac/config/pac_common.mk
 $(call inherit-product, device/lge/geeb/cm.mk)
 
 PRODUCT_NAME := pac_geeb
-
-# Update local_manifest.xml
-GET_PROJECT_RMS := $(shell vendor/pac/tools/removeprojects.py $(PRODUCT_NAME))
-GET_PROJECT_ADDS := $(shell vendor/pac/tools/addprojects.py $(PRODUCT_NAME))
 
 endif
